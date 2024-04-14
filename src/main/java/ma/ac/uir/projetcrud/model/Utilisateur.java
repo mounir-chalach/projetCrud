@@ -3,15 +3,17 @@ package ma.ac.uir.projetcrud.model;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "Users")
+@Entity(name = "Users")
+@Table
 public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private Long id;
     @Column(name="username")
-    private String usernamme;
+    private String username;
+    @Column(name="email")
+    private String email;
     @Column(name="password")
     private String Password;
     @Column(name="role")
@@ -20,9 +22,10 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(Long id, String usernamme, String password, String role) {
+    public Utilisateur(Long id, String username, String email, String password, String role) {
         this.id = id;
-        this.usernamme = usernamme;
+        this.username = username;
+        this.email = email;
         Password = password;
         this.role = role;
     }
@@ -35,12 +38,20 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public String getUsernamme() {
-        return usernamme;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsernamme(String usernamme) {
-        this.usernamme = usernamme;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -57,16 +68,6 @@ public class Utilisateur {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "Utilisateur{" +
-                "id=" + id +
-                ", usernamme='" + usernamme + '\'' +
-                ", Password='" + Password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
     }
 }
 
